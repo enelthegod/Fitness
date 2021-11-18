@@ -6,7 +6,7 @@ namespace Fitness.BL.Model
     /// User.
     /// </summary>
     [Serializable]
-
+    
     public class User
     {
         #region Properties
@@ -43,7 +43,6 @@ namespace Fitness.BL.Model
 
             if (birthdate < DateTime.Parse("01.01.1900") || birthdate >= DateTime.Now )
             {
-                throw new ArgumentException ("Invalide birthdate", nameof(birthdate));
             }
 
             if (weight <= 0)

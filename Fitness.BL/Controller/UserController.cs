@@ -14,6 +14,7 @@ namespace Fitness.BL.Controller
         /// Programm user.
         /// </summary>
         public User User { get; }
+        //public List<User> User {get;} 
 
         /// <summary>
         /// Create new user controller.

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Fitness.BL.Controller;
+using Fitness.BL.Model;
+using System;
 
 namespace Fitness.CMD
 {
@@ -7,19 +9,24 @@ namespace Fitness.CMD
         static void Main(string[] args)
         {
             Console.WriteLine("My programm");
-            Console.WriteLine("Input user name-->");
 
+            Console.WriteLine("User name-->");
             var name = Console.ReadLine();
-            //TODO: |> Надо конструктор еще <|
-            Console.WriteLine("Input gender-->");
+           
+            Console.WriteLine("Gender-->");
             var gender = Console.ReadLine();
 
-            Console.WriteLine("Input -->");
-            var gender = Console.ReadLine();
+            Console.WriteLine("Birthdate -->");
+            var birthdate = DateTime.Parse(Console.ReadLine());
 
+            Console.WriteLine("Weight-->");
+            var weight = double.Parse(Console.ReadLine());
 
+            Console.WriteLine("Height-->");
+            var height = double.Parse(Console.ReadLine());
 
-
+            var userController = new UserController(name, gender, birthdate, weight, height);
+            userController.Save();
 
         }
     }
