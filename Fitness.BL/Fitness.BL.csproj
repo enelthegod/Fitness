@@ -41,10 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <Compile Include="Controller\UserController.cs" />
-=======
->>>>>>> c49d8b981622125364cbc53863e8083839e415c4
+    <Compile Include="Services\UserService.cs" />
     <Compile Include="Model\Gender.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

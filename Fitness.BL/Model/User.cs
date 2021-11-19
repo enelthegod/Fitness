@@ -2,9 +2,7 @@
 
 namespace Fitness.BL.Model
 {
-    /// <summary>
-    /// User.
-    /// </summary>
+
     [Serializable]
     
     public class User
@@ -12,22 +10,20 @@ namespace Fitness.BL.Model
         #region Properties
         public string Name { get; }
 
-        public Gender Gender { get; }
+        public Gender Gender { get; set; }
 
-        public DateTime BirthDate { get; }
+        public DateTime BirthDate { get; set; }
 
         public double Weight { get; set; }
 
         public double Height { get; set; }
+
+        public int Age { get { return DateTime.Now.Year - BirthDate.Year; } }
+        //DateTime nowDate = DateTie.Today;
+        //int age = nowDate.Year - birthDate.Year;
+        //if(birthdate > nowDate.AddYears(-age)) age--;
         #endregion
-        /// <summary>
-        /// Create new user.
-        /// </summary>
-        /// <param name="name">Name</param>
-        /// <param name="gender">Gender</param>
-        /// <param name="birthdate">Birthdate</param>
-        /// <param name="weight">Weight</param>
-        /// <param name="height">Height</param>
+
         public User(string name, Gender gender, DateTime birthdate, double weight, double height)
         {
         #region Tests
@@ -54,7 +50,7 @@ namespace Fitness.BL.Model
             {
                 throw new ArgumentException ("Invalid height", nameof(height));
             }
-        #endregion
+            #endregion
 
             Name = name;
             Gender = gender;
@@ -62,9 +58,19 @@ namespace Fitness.BL.Model
             Weight = weight;
             Height = height;
         }
+
+        public User(string name) 
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentNullException("Incorrect user name", nameof(name));
+            }
+
+            Name = name;
+        }
         public override string ToString()
         {
-            return Name;
+            return Name + " " +Age ;
         }
     }
 }

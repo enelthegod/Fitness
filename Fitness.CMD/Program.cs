@@ -1,7 +1,7 @@
 ﻿using Fitness.BL.Controller;
 using Fitness.BL.Model;
 using System;
-
+// join entity
 namespace Fitness.CMD
 {
     class Program
@@ -11,22 +11,60 @@ namespace Fitness.CMD
             Console.WriteLine("My programm");
 
             Console.WriteLine("User name-->");
+
             var name = Console.ReadLine();
            
-            Console.WriteLine("Gender-->");
-            var gender = Console.ReadLine();
+            var userService = new UserService(name);
 
-            Console.WriteLine("Birthdate -->");
-            var birthdate = DateTime.Parse(Console.ReadLine());
+            if(userService.IsNewUser)
+            {
+                Console.Write("Gender-->");
+                var gender = Console.ReadLine();
+                var birthdate = ParseDateTime();
+                var weight = ParseDouble("weight");
+                var height = ParseDouble("height");
 
-            Console.WriteLine("Weight-->");
-            var weight = double.Parse(Console.ReadLine());
+                userService.SetNewUserData(gender, birthdate, weight, height);
+            }
 
-            Console.WriteLine("Height-->");
-            var height = double.Parse(Console.ReadLine());
+            Console.WriteLine(userService.CurrentUser);
+            Console.ReadLine();
 
-            var userController = new UserController(name, gender, birthdate, weight, height);
-            userController.Save();
+        }
+
+        private static DateTime ParseDateTime()
+        {
+            DateTime birthDate;
+            while (true)
+            {
+                Console.Write("BirthDate (dd.mm.yyy)-->");
+                if (DateTime.TryParse(Console.ReadLine(), out birthDate))
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Incorrect birthDate formate");
+                }
+            }
+
+            return birthDate;
+        }
+
+        private static double ParseDouble(string name)
+        {
+            while (true)
+            {
+                Console.Write($"Input-->{name}:");
+                if (double.TryParse(Console.ReadLine(), out double value))
+                {
+                    return value;
+                }
+                else
+                {
+                    Console.WriteLine($"Incorrect {name} formate");
+                }
+            }
 
         }
     }
