@@ -41,6 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Food.cs" />
+    <Compile Include="Model\Meal.cs" />
+    <Compile Include="Services\MealService.cs" />
+    <Compile Include="Services\ServiceBase.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Model\Gender.cs" />
     <Compile Include="Model\User.cs" />

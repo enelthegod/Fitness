@@ -1,4 +1,4 @@
-﻿using Fitness.BL.Controller;
+﻿using Fitness.BL.Service;
 using Fitness.BL.Model;
 using System;
 // join entity

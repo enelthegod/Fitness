@@ -1,12 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Fitness.BL.Controller;
+using Fitness.BL.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fitness.BL.Controller.Tests
+namespace Fitness.BL.Service.Tests
 {
     [TestClass()]
     public class UserServiceTests
@@ -19,17 +19,17 @@ namespace Fitness.BL.Controller.Tests
             var weight = 90;
             var height = 190;
             var gender = "man";
-            var controller = new UserService(userName);
+            var service = new UserService(userName);
 
-            controller.SetNewUserData(gender, birthdate, weight, height);
-            var controller2 = new UserService(userName);
+            service.SetNewUserData(gender, birthdate, weight, height);
+            var service2 = new UserService(userName);
 
 
-            Assert.AreEqual(userName, controller2.CurrentUser.Name);
-            Assert.AreEqual(birthdate, controller2.CurrentUser.BirthDate);
-            Assert.AreEqual(weight, controller2.CurrentUser.Weight);
-            Assert.AreEqual(height, controller2.CurrentUser.Height);
-            Assert.AreEqual(gender, controller2.CurrentUser.Gender.Name);
+            Assert.AreEqual(userName, service2.CurrentUser.Name);
+            Assert.AreEqual(birthdate, service2.CurrentUser.BirthDate);
+            Assert.AreEqual(weight, service2.CurrentUser.Weight);
+            Assert.AreEqual(height, service2.CurrentUser.Height);
+            Assert.AreEqual(gender, service2.CurrentUser.Gender.Name);
 
         }
 
@@ -40,10 +40,10 @@ namespace Fitness.BL.Controller.Tests
             var userName = Guid.NewGuid().ToString();
 
             //act
-            var controller = new UserService(userName);
+            var service = new UserService(userName);
 
             //assert
-            Assert.AreEqual(userName, controller.CurrentUser.Name);
+            Assert.AreEqual(userName, service.CurrentUser.Name);
 
         }
     }
